@@ -4,17 +4,18 @@ class Todo
   end
 
   def task
+    fail "Valid task required" if @task.empty?
     @task
   end
 
   def mark_done!
-    @task = @task + "@TODO"
+    @task += "@done"
     # Marks the todo as done
     # Returns nothing
   end
 
   def done?
-    if @task.include? "@TODO"
+    if @task.include? "@done"
       return true
     else
       return false

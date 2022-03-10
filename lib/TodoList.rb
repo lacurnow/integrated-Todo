@@ -1,6 +1,7 @@
 class TodoList
   def initialize
     @todo_list = []
+    @complete_list = []
   end
 
   def add(todo) 
@@ -15,10 +16,18 @@ class TodoList
   end
 
   def complete
-    # Returns all complete todos
+    @todo_list.each { |todo| 
+      if todo.done?
+        @complete_list << todo
+      end 
+      }
+    @complete_list
   end
 
   def give_up!
+    @todo_list.map { |task|
+      task.mark_done!
+    }
     # Marks all todos as complete
   end
 end

@@ -12,7 +12,7 @@ RSpec.describe "integration" do
     end
   end
   context "when we complete a todo task" do
-    it "adds incomplete todo to complete todo" do
+    it "adds incomplete todo to complete todo list" do
       todo_list = TodoList.new
       new_task1 = Todo.new("Walk the dog")
       new_task2 = Todo.new("Wash the car")
@@ -21,6 +21,29 @@ RSpec.describe "integration" do
       new_task1.mark_done!
       result = todo_list.complete
       expect(result).to eq [new_task1]
+    end
+  end
+
+  context "when no completed todo tasks" do
+    it "returns an empty list" do
+      todo_list = TodoList.new
+      new_task1 = Todo.new("Walk the dog")
+      todo_list.add(new_task1)
+      result = todo_list.complete
+      expect(result).to eq []
+    end
+  end
+
+  context "#give_up!" do
+    it "marks all todos as complete" do
+      todo_list = TodoList.new
+      new_task1 = Todo.new("Walk the dog")
+      new_task2 = Todo.new("Wash the car")
+      todo_list.add(new_task1)
+      todo_list.add(new_task2)
+      todo_list.give_up!
+      result = todo_list.complete
+      expect(result).to eq [new_task1, new_task2]
     end
   end
 end
