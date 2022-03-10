@@ -9,6 +9,7 @@ class Todo
   end
 
   def mark_done!
+    fail "Already marked as done" if @task.include? "@done"
     @task += "@done"
     # Marks the todo as done
     # Returns nothing

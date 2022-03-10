@@ -5,6 +5,7 @@ RSpec.describe Todo do
     new_todo = Todo.new("Walk the dog")
     expect(new_todo.task).to eq "Walk the dog"
   end
+  
   context "when initialised with an empty string" do
     it "fails" do
       new_todo = Todo.new("")
@@ -17,6 +18,12 @@ RSpec.describe Todo do
       new_todo = Todo.new("Walk the dog")
       new_todo.mark_done!
       expect(new_todo.done?).to eq true
+    end
+
+    it "skips any already marked as complete tasks" do
+      new_todo = Todo.new("Walk the dog")
+      new_todo.mark_done! 
+      expect{ new_todo.mark_done!}.to raise_error "Already marked as done"
     end
   end
   

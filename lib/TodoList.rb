@@ -19,6 +19,7 @@ class TodoList
     @todo_list.each { |todo| 
       if todo.done?
         @complete_list << todo
+        @todo_list.delete(todo)
       end 
       }
     @complete_list
