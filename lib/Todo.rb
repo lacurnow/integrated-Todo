@@ -1,10 +1,10 @@
 class Todo
   def initialize(task) # task is a string
-    # ...
+    @task = task
   end
 
   def task
-    # Returns the task as a string
+    @task
   end
 
   def mark_done!
