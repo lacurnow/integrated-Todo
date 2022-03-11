@@ -11,6 +11,7 @@ RSpec.describe "integration" do
       expect(result).to eq [new_task]
     end
   end
+  
   context "when we complete a todo task" do
     it "adds incomplete todo to complete todo list" do
       todo_list = TodoList.new
