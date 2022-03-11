@@ -1,3 +1,5 @@
+require_relative 'Todo.rb'
+
 class TodoList
   def initialize
     @todo_list = []
@@ -19,9 +21,13 @@ class TodoList
     @todo_list.each { |todo| 
       if todo.done?
         @complete_list << todo
-        @todo_list.delete(todo)
       end 
-      }
+    }
+    @complete_list.each { |todo| 
+    if @todo_list.include? todo
+      @todo_list.delete(todo)
+    end
+    }
     @complete_list
   end
 
@@ -32,3 +38,12 @@ class TodoList
     # Marks all todos as complete
   end
 end
+
+todo_list = TodoList.new
+new_task1 = Todo.new("Walk the dog")
+new_task2 = Todo.new("Wash the car")
+todo_list.add(new_task1)
+todo_list.add(new_task2)
+todo_list.give_up!
+todo_list.complete
+
