@@ -51,6 +51,7 @@ RSpec.describe "integration" do
       todo_list = TodoList.new
       new_task1 = Todo.new("Walk the dog")
       new_task2 = Todo.new("Wash the car")
+      new_task2 = Todo.new("Wash the car")
       todo_list.add(new_task1)
       todo_list.add(new_task2)
       todo_list.give_up!
